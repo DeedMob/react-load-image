@@ -4,8 +4,10 @@
   "description": "A React component for showing placeholder content during image loading",
   "main": "./lib/index.js",
   "scripts": {
-    "prepublish": "make node",
-    "test": "make test"
+    "build:example": "webpack example/example.js example/dist.js",
+    "build:commonjs": "babel src --out-dir lib",
+    "build": "npm run build:commonjs",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -42,6 +44,8 @@
     "node-libs-browser": "^0.5.2",
     "opn": "^2.0.1",
     "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "webpack": "^3.3.0",
     "webpack-dev-middleware": "^1.0.11",
     "yargs": "^3.11.0"

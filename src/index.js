@@ -84,18 +84,18 @@ export default class ImageLoader extends React.Component {
 
 
   render() {
-    const { src, onLoad, onError, wrapperProps } = this.props;
+    const { src, onLoad, onError, wrapperProps, children } = this.props;
 
     return (
       <div {...wrapperProps} className={this.getClassName()}>
         {this.state.status === Status.LOADED &&
-          React.cloneElement(this.props.children[0], { src:  this.props.src })
+          React.cloneElement(children[0], { src: src })
         }
         {this.state.status === Status.FAILED &&
-          this.props.children[1]
+          children[1]
         }
         {(this.state.status === Status.LOADING || this.state.status === Status.PENDING) &&
-          this.props.children[2]
+          children[2]
         }
       </div>
     )
