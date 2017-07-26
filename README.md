@@ -53,3 +53,51 @@ The first child of `ImageLoader` will be rendered when the image is successfully
 The second child of `ImageLoader` will be rendered when the image load fails.
 
 The third child of `ImageLoader` will be rendered when the image is in the process of loading
+
+
+Avoiding duplication Example
+-------
+```js
+import React from 'react';
+import ImageLoader from 'react-load-image';
+import ImageError from './ImageError';
+import ImageLoading from './ImageLoading';
+
+const Image = (props) =>
+  <ImageLoader {...props}>
+    {this.props.children[0]}
+    <ImageError />
+    <ImageLoader />
+  </ImageLoader>
+
+export default Image;
+```
+-----
+```js
+import Image from './Image';
+
+...
+<Image style={{width: '50px'}}>
+  <img style={{border: none}} />
+</Image>
+...
+
+```
+
+
+Using it as a backgroundImage
+-----
+```js
+import React from 'react';
+
+const BackgroundImage = ({src, style = {}, ...props} = {}) =>
+  <div style={Object.assign({backgroundImage: `url(${src})`}, style)} {...props} />
+
+export default BackgroundImage;
+```
+  <Image style={{width: '50px'}}>
+    <BackgroundImage />
+  </Image>
+```js
+
+```

@@ -87,7 +87,7 @@ export default class ImageLoader extends React.Component {
     const { src, onLoad, onError, wrapperProps } = this.props;
 
     return (
-      <div {...wrapperProps} className={getClassName()}>
+      <div {...wrapperProps} className={this.getClassName()}>
         {this.state.status === Status.LOADED &&
           React.cloneElement(this.props.children[0], { src:  this.props.src })
         }
