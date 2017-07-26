@@ -11,6 +11,10 @@ This [React] component can improve the situation by allowing you to display
 content while waiting for the image to load, as well as by showing alternate
 content if the image fails to load.
 
+Installing
+-----
+`npm install @deedmob/react-imageloader`
+
 
 Usage
 -----
