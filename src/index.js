@@ -8,23 +8,12 @@ const Status = {
   FAILED: 'failed',
 };
 
-
 export default class ImageLoader extends React.Component {
   static propTypes = {
-    wrapper: PropTypes.func,
-    className: PropTypes.string,
-    style: PropTypes.object,
-    preloader: PropTypes.func,
-    src: PropTypes.string,
+    src: PropTypes.string.isRequired,
     onLoad: PropTypes.func,
     onError: PropTypes.func,
-    imgProps: PropTypes.object,
-    asBackgroundImage: PropTypes.bool
-  };
-
-  static defaultProps = {
-    wrapper: <span></span>,
-    asBackgroundImage: false
+    // Allow any extras
   };
 
   constructor(props) {
@@ -54,12 +43,6 @@ export default class ImageLoader extends React.Component {
 
   componentWillUnmount() {
     this.destroyLoader();
-  }
-
-  getClassName() {
-    let className = `imageloader ${this.state.status}`;
-    if (this.props.className) className = `${className} ${this.props.className}`;
-    return className;
   }
 
   createLoader() {
@@ -93,58 +76,28 @@ export default class ImageLoader extends React.Component {
     if (this.props.onError) this.props.onError(error);
   }
 
-  renderImg() {
-    const {src, imgProps, asBackgroundImage} = this.props;
-    if(asBackgroundImage){
-      let props = {src};
-
-      for (let k in imgProps) {
-        if (imgProps.hasOwnProperty(k)) {
-          props[k] = imgProps[k];
-        }
-      }
-      return (
-        <div style={{backgroundImage: `url(${src})`}} {...props}/>
-      );
-    }
-    else {
-      let props = {src};
-
-      for (let k in imgProps) {
-        if (imgProps.hasOwnProperty(k)) {
-          props[k] = imgProps[k];
-        }
-      }
-
-      return <img {...props} />;
-    }
+  getClassName() {
+    let className = `imageloader imageloader-${this.state.status}`;
+    if (this.props.className) className = `${className} ${this.props.className}`;
+    return className;
   }
 
+
   render() {
-    let wrapperProps = {
-      className: this.getClassName(),
-    };
+    const { src, onLoad, onError, wrapperProps } = this.props;
 
-    if (this.props.style) {
-      wrapperProps.style = this.props.style;
-    }
-
-    let wrapperArgs = [wrapperProps];
-
-    switch (this.state.status) {
-      case Status.LOADED:
-        wrapperArgs.push(this.renderImg());
-        break;
-
-      case Status.FAILED:
-        if (this.props.children) wrapperArgs.push(this.props.children);
-        break;
-
-      default:
-        if (this.props.preloader) wrapperArgs.push(this.props.preloader());
-        break;
-    }
-
-    return this.props.wrapper(...wrapperArgs);
+    return (
+      <div {...wrapperProps} className={getClassName()}>
+        {this.state.status === Status.LOADED &&
+          React.cloneElement(this.props.children[0], { src:  this.props.src })
+        }
+        {this.state.status === Status.FAILED &&
+          this.props.children[1]
+        }
+        {(this.state.status === Status.LOADING || this.state.status === Status.PENDING) &&
+          this.props.children[2]
+        }
+      </div>
+    )
   }
 }

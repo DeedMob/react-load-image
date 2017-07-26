@@ -8,12 +8,16 @@ export default {
     filename: 'react-imageloader.js',
     library: 'ReactImageLoader',
     libraryTarget: 'umd',
-    target: 'web',
   },
+  target: 'web',
   externals: ['React', {react: 'React'}],
   module: {
-    loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: 'babel?stage=0'},
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      },
     ],
   },
   plugins: [

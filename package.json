@@ -1,7 +1,7 @@
 {
-  "name": "@deedmob/react-imageloader",
-  "version": "2.1.0",
-  "description": "A React component for wrangling image loading",
+  "name": "react-image-loader",
+  "version": "0.1.0",
+  "description": "A React component for showing placeholder content during image loading",
   "main": "./lib/index.js",
   "scripts": {
     "prepublish": "make node",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hzdg/react-imageloader.git"
+    "url": "git://github.com/DeedMob/react-image-loader.git"
   },
   "keywords": [
     "react-component",
@@ -17,17 +17,20 @@
     "loader",
     "component"
   ],
-  "author": "Eric Eldredge <lettertwo@gmail.com>",
+  "author": "David Furlong <david@deedmob.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hzdg/react-imageloader/issues"
+    "url": "https://github.com/DeedMob/react-image-loader/issues"
   },
-  "homepage": "https://github.com/hzdg/react-imageloader",
+  "homepage": "https://github.com/DeedMob/react-image-loader",
   "devDependencies": {
-    "babel": "^5.5.8",
-    "babel-core": "^5.5.8",
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.25.0",
     "babel-eslint": "^3.1.16",
-    "babel-loader": "^5.1.4",
+    "babel-loader": "^7",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^5.5.8",
     "chai": "^3.0.0",
     "eslint": "^0.23.0",
@@ -38,7 +41,8 @@
     "mversion": "^1.10.0",
     "node-libs-browser": "^0.5.2",
     "opn": "^2.0.1",
-    "webpack": "^1.9.11",
+    "prop-types": "^15.5.10",
+    "webpack": "^3.3.0",
     "webpack-dev-middleware": "^1.0.11",
     "yargs": "^3.11.0"
   },
