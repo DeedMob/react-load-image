@@ -1,5 +1,5 @@
 {
-  "name": "react-imageloader",
+  "name": "@deedmob/react-imageloader",
   "version": "2.1.0",
   "description": "A React component for wrangling image loading",
   "main": "./lib/index.js",

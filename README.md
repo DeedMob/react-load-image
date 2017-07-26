@@ -48,6 +48,7 @@ Name        | Type     | Description
 `src`       | string   | The URL of the image to be loaded.
 `style`     | object   | An optional object containing styles for the `wrapper` component.
 `wrapper`   | function | A function that takes a props argument and returns a React element to be used as the wrapper component. Defaults to `React.DOM.span`.
+`asBackgroundImage` | boolean | whether to use a div with backgroundImage style or to use an img element
 
 
 Children

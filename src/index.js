@@ -1,7 +1,5 @@
 import React from 'react';
-
-const {PropTypes} = React;
-const {span} = React.DOM;
+import PropTypes from 'prop-types';
 
 const Status = {
   PENDING: 'pending',
@@ -21,10 +19,12 @@ export default class ImageLoader extends React.Component {
     onLoad: PropTypes.func,
     onError: PropTypes.func,
     imgProps: PropTypes.object,
+    asBackgroundImage: PropTypes.bool
   };
 
   static defaultProps = {
-    wrapper: span,
+    wrapper: <span></span>,
+    asBackgroundImage: false
   };
 
   constructor(props) {
@@ -94,16 +94,30 @@ export default class ImageLoader extends React.Component {
   }
 
   renderImg() {
-    const {src, imgProps} = this.props;
-    let props = {src};
+    const {src, imgProps, asBackgroundImage} = this.props;
+    if(asBackgroundImage){
+      let props = {src};
 
-    for (let k in imgProps) {
-      if (imgProps.hasOwnProperty(k)) {
-        props[k] = imgProps[k];
+      for (let k in imgProps) {
+        if (imgProps.hasOwnProperty(k)) {
+          props[k] = imgProps[k];
+        }
       }
+      return (
+        <div style={{backgroundImage: `url(${src})`}} {...props}/>
+      );
     }
+    else {
+      let props = {src};
 
-    return <img {...props} />;
+      for (let k in imgProps) {
+        if (imgProps.hasOwnProperty(k)) {
+          props[k] = imgProps[k];
+        }
+      }
+
+      return <img {...props} />;
+    }
   }
 
   render() {
