@@ -13,12 +13,15 @@ export default class ImageLoader extends React.Component {
     src: PropTypes.string.isRequired,
     onLoad: PropTypes.func,
     onError: PropTypes.func,
+    children: PropTypes.arrayOf(React.PropTypes.node),
     // Allow any extras
   };
 
   constructor(props) {
     super(props);
     this.state = {status: props.src ? Status.LOADING : Status.PENDING};
+    if(React.Children.count(props.children) !== 3)
+      console.error('wrong # of children provided to ImageLoader')
   }
 
   componentDidMount() {
@@ -85,17 +88,18 @@ export default class ImageLoader extends React.Component {
 
   render() {
     const { src, onLoad, onError, wrapperProps, children } = this.props;
+    const childrenArray = React.Children.toArray(children);
 
     return (
       <div {...wrapperProps} className={this.getClassName()}>
         {this.state.status === Status.LOADED &&
-          React.cloneElement(children[0], { src: src })
+          React.cloneElement(childrenArray[0], { src: src })
         }
         {this.state.status === Status.FAILED &&
-          children[1]
+          childrenArray[1]
         }
         {(this.state.status === Status.LOADING || this.state.status === Status.PENDING) &&
-          children[2]
+          childrenArray[2]
         }
       </div>
     )
