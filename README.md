@@ -1,4 +1,4 @@
-react-image-loader
+react-load-image
 =================
 
 This is a fork of https://github.com/hzdg/react-imageloader, however many design changes were made and deprecations fixed so it warranted its own repo/package.
@@ -9,7 +9,7 @@ content if the image fails to load.
 
 Installing
 -----
-`npm install react-image-loader`
+`npm install react-load-image`
 
 
 Usage
@@ -17,7 +17,7 @@ Usage
 
 ```javascript
 import React from 'react';
-import ImageLoader from 'react-imageloader';
+import ImageLoader from 'react-load-image';
 
 function Preloader(props) {
   return <img src="spinner.gif" />;

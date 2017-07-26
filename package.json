@@ -1,6 +1,6 @@
 {
-  "name": "react-image-loader",
-  "version": "0.1.0",
+  "name": "react-load-image",
+  "version": "0.1.1",
   "description": "A React component for showing placeholder content during image loading",
   "main": "./lib/index.js",
   "scripts": {
