@@ -52,7 +52,7 @@
   },
   "peerDependencies": {
     "react": "^15.6.1",
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.6.1"
   },
   "dependencies": {}
 }
