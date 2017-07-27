@@ -13,7 +13,7 @@ export default class ImageLoader extends React.Component {
     src: PropTypes.string.isRequired,
     onLoad: PropTypes.func,
     onError: PropTypes.func,
-    children: PropTypes.arrayOf(React.PropTypes.node),
+    children: PropTypes.arrayOf(PropTypes.node),
     // Allow any extras
   };
 
