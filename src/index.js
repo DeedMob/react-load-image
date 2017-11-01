@@ -11,6 +11,7 @@ const Status = {
 export default class ImageLoader extends React.Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
+    srcSet: PropTypes.string,
     onLoad: PropTypes.func,
     onError: PropTypes.func,
     children: PropTypes.arrayOf(PropTypes.node),
@@ -55,6 +56,10 @@ export default class ImageLoader extends React.Component {
     this.img.onload = ::this.handleLoad;
     this.img.onerror = ::this.handleError;
     this.img.src = this.props.src;
+
+    // if srcSet is not passed in then use src for srcset
+    // Setting srcset to a non-string is a bad idea. E.g. this.img.srcset = undefined actually sets srcset to the string "undefined", causing a load failure)
+    this.img.srcset = this.props.srcSet || this.props.src;
   }
 
   destroyLoader() {
@@ -87,13 +92,13 @@ export default class ImageLoader extends React.Component {
 
 
   render() {
-    const { src, onLoad, onError, wrapperProps, children } = this.props;
+    const { src, srcSet, onLoad, onError, wrapperProps, children } = this.props;
     const childrenArray = React.Children.toArray(children);
 
     return (
       <div {...wrapperProps} className={this.getClassName()}>
         {this.state.status === Status.LOADED &&
-          React.cloneElement(childrenArray[0], { src: src })
+            React.cloneElement(childrenArray[0], { src, srcSet })
         }
         {this.state.status === Status.FAILED &&
           childrenArray[1]
