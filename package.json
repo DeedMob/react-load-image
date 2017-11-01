@@ -7,8 +7,12 @@
     "build:example": "webpack example/example.js example/dist.js",
     "build:commonjs": "babel src --out-dir lib",
     "build": "npm run build:commonjs",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "watch": "onchange 'src/**/*.js' -- npm run build"
   },
+  "pre-commit": [
+    "build"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/DeedMob/react-load-image.git"
@@ -42,6 +46,7 @@
     "mocha": "^2.2.5",
     "mversion": "^1.10.0",
     "node-libs-browser": "^0.5.2",
+    "onchange": "^3.2.1",
     "opn": "^2.0.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
@@ -51,8 +56,8 @@
     "yargs": "^3.11.0"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "prop-types": "^15.6.0"
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0"
   },
   "dependencies": {}
 }
