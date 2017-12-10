@@ -43,7 +43,7 @@
     "mversion": "^1.10.0",
     "node-libs-browser": "^0.5.2",
     "opn": "^2.0.1",
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.6.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "webpack": "^3.3.0",
