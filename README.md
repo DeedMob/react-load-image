@@ -15,7 +15,7 @@ Installing
 Usage
 -----
 
-```javascript
+```js
 import React from 'react';
 import ImageLoader from 'react-load-image';
 
@@ -44,6 +44,7 @@ Name        | Type     | Description
 `onError`   | function | An optional handler for the [error] event.
 `onLoad`    | function | An optional handler for the [load] event.
 `src`       | string   | The URL of the image to be loaded, will be passed as the src prop to your first child provided. If you want to use it as a background image, make your first child a react component like Name = (props) => <div style={{backgroundImage: props.src}}/> and do <Name/>
+`srcSet`    | string   | An optional value for the srcset attribute of the img
 
 
 Children
@@ -95,9 +96,8 @@ const BackgroundImage = ({src, style = {}, ...props} = {}) =>
 
 export default BackgroundImage;
 ```
+```js
   <Image style={{width: '50px'}}>
     <BackgroundImage />
   </Image>
-```js
-
 ```

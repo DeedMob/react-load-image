@@ -1,4 +1,5 @@
-/node_modules/
-/.eslintrc
-/.babelrc
-/src/
+node_modules/
+.eslintrc
+.babelrc
+src/
+example/
