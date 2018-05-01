@@ -96,6 +96,7 @@ const BackgroundImage = ({src, style = {}, ...props} = {}) =>
 
 export default BackgroundImage;
 ```
+
 ```js
   <Image style={{width: '50px'}}>
     <BackgroundImage />
