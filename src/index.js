@@ -52,14 +52,15 @@ export default class ImageLoader extends React.Component {
   createLoader() {
     this.destroyLoader();  // We can only have one loader at a time.
 
-    this.img = new Image();
-    this.img.onload = ::this.handleLoad;
-    this.img.onerror = ::this.handleError;
-    this.img.src = this.props.src;
+    const img = new Image();
+    img.onload = ::this.handleLoad;
+    img.onerror = ::this.handleError;
+    img.src = this.props.src;
 
     // if srcSet is not passed in then use src for srcset
-    // Setting srcset to a non-string is a bad idea. E.g. this.img.srcset = undefined actually sets srcset to the string "undefined", causing a load failure)
-    this.img.srcset = this.props.srcSet || this.props.src;
+    // Setting srcset to a non-string is a bad idea. E.g. img.srcset = undefined actually sets srcset to the string "undefined", causing a load failure)
+    img.srcset = this.props.srcSet || this.props.src;
+    this.img = img;
   }
 
   destroyLoader() {
