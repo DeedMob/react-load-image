@@ -1,7 +1,7 @@
 react-load-image
 =================
-https://img.shields.io/npm/dw/react-load-image.svg
-https://img.shields.io/npm/l/react-load-image.svg
+![](https://img.shields.io/npm/dw/react-load-image.svg)
+![](https://img.shields.io/npm/l/react-load-image.svg)
 
 This is a fork of https://github.com/hzdg/react-imageloader, however many design changes were made and deprecations fixed so it warranted its own repo/package.
 
