@@ -12,7 +12,7 @@ content if the image fails to load.
 
 Installing
 -----
-`npm install react-load-image`
+`npm i react-load-image`
 
 
 Usage
