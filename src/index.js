@@ -20,7 +20,10 @@ export default class ImageLoader extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {status: props.src ? Status.LOADING : Status.PENDING};
+    this.state = {
+      status: props.src ? Status.LOADING : Status.PENDING,
+      src: props.src
+    };
     if(React.Children.count(props.children) !== 3)
       console.error('wrong # of children provided to ImageLoader')
   }
@@ -31,12 +34,14 @@ export default class ImageLoader extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.src !== nextProps.src) {
-      this.setState({
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.src !== nextProps.src) {
+      return {
         status: nextProps.src ? Status.LOADING : Status.PENDING,
-      });
+        src: nextProps.src
+      };
     }
+    return null;
   }
 
   componentDidUpdate() {
