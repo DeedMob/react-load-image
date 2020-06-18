@@ -44,7 +44,7 @@
     "express": "^4.12.4",
     "git-release-notes": "0.0.2",
     "mocha": "^2.2.5",
-    "mversion": "^1.10.0",
+    "mversion": "^2.0.0",
     "node-libs-browser": "^0.5.2",
     "onchange": "^3.2.1",
     "opn": "^2.0.1",
